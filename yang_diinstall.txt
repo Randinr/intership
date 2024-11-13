@@ -1,0 +1,129 @@
+menginstall Reacjs menggunakan yarn
+1. yarn create react-app my-app
+2. cd my-app
+3. yarn add tailwindcss postcss autoprefixer
+4. npx tailwindcss init -p
+5. tailwind.config.js
+
+    module.exports = {
+    content: [
+        "./src/**/*.{js,jsx,ts,tsx}",
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
+    }
+
+6. src/index.css
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+7. yarn add firebase
+8. yarn add framer-motion
+9. yarn add aos
+10. yarn start
+
+
+1. Pengertian AOS
+AOS menyediakan banyak pilihan animasi yang bisa digunakan. Berikut adalah beberapa efek animasi lain yang bisa diterapkan dengan AOS:
+
+1. Fade Animations:
+   - fade : Fade biasa (tanpa arah tertentu)
+   - fade-down : Muncul dari atas ke bawah
+   - fade-down-right : Muncul dari atas kanan ke bawah kiri
+   - fade-down-left : Muncul dari atas kiri ke bawah kanan
+   - fade-up-right : Muncul dari bawah kanan ke atas kiri
+   - fade-up-left : Muncul dari bawah kiri ke atas kanan
+
+2. Slide Animations:
+   - slide-up : Geser ke atas
+   - slide-down : Geser ke bawah
+   - slide-left : Geser ke kiri
+   - slide-right : Geser ke kanan
+
+3. Zoom Animations:
+   - zoom-in : Zoom ke dalam
+   - zoom-in-up : Zoom ke dalam dari bawah
+   - zoom-in-down : Zoom ke dalam dari atas
+   - zoom-in-left : Zoom ke dalam dari kiri
+   - zoom-in-right : Zoom ke dalam dari kanan
+   - zoom-out : Zoom ke luar
+   - zoom-out-up : Zoom keluar dari bawah
+   - zoom-out-down : Zoom keluar dari atas
+   - zoom-out-left : Zoom keluar dari kiri
+   - zoom-out-right : Zoom keluar dari kanan
+
+4. Flip Animations:
+   - flip-left : Membalik dari kiri
+   - flip-right : Membalik dari kanan
+   - flip-up : Membalik dari bawah
+   - flip-down : Membalik dari atas
+
+Untuk menerapkan, kamu cukup menyesuaikan nilai pada data-aos, contohnya:
+html
+<div data-aos="slide-up">
+  Konten yang akan muncul dengan efek slide ke atas
+</div>
+
+Selain itu, kamu juga bisa mengatur properti lain seperti:
+- data-aos-duration : Mengatur durasi animasi (dalam milidetik, misalnya data-aos-duration="1000")
+- data-aos-delay : Memberikan delay sebelum animasi dimulai (misalnya data-aos-delay="300")
+- data-aos-easing : Mengatur easing (contoh: data-aos-easing="ease-in-out")
+
+AOS memungkinkan berbagai efek dan pengaturan tambahan untuk membuat animasi lebih dinamis dan sesuai kebutuhan halamanmu.
+
+
+
+
+
+
+2. framer-motion
+
+
+framer-motion adalah library animasi berbasis React yang sangat populer untuk membuat animasi yang halus dan interaktif pada antarmuka web. Dengan framer-motion, kamu bisa membuat animasi kompleks seperti transisi halaman, animasi pada elemen saat di-hover, drag-and-drop, dan berbagai efek lainnya dengan lebih mudah dan fleksibel dibandingkan CSS atau library animasi dasar.
+
+### Beberapa fitur utama dari Framer Motion:
+1.  Gestures : Mendukung animasi interaktif, seperti saat elemen di-hover, ditekan, atau ditarik (drag).
+2.  Variants : Memudahkan pembuatan animasi kompleks dengan mendefinisikan "varian" dari suatu elemen dan mengubah statusnya dengan mudah.
+3.  Page Transitions : Membuat transisi halaman yang halus, yang sangat bermanfaat dalam aplikasi single-page (SPA) atau multi-page React.
+4.  Scroll Animations : Mendukung animasi yang dipicu saat elemen muncul di layar.
+5.  Drag and Drop : Dukungan bawaan untuk membuat animasi tarik dan lepaskan pada elemen-elemen, misalnya kartu atau item di UI.
+
+### Contoh Penggunaan Framer Motion
+Setelah menginstal Framer Motion dengan:
+bash
+yarn add framer-motion
+
+
+Kamu bisa mulai menggunakan animasi dasar. Contoh berikut menampilkan cara membuat animasi sederhana menggunakan motion.div:
+
+javascript
+import { motion } from 'framer-motion';
+
+function MyComponent() {
+  return (
+    <motion.div
+      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.5 }}
+    >
+      Konten yang dianimasikan
+    </motion.div>
+  );
+}
+
+
+Dalam contoh ini:
+- initial menentukan keadaan awal dari elemen (di luar layar dan transparan).
+- animate menentukan keadaan akhir yang ingin dicapai (posisi normal dengan opacity penuh).
+- transition mengatur durasi animasi.
+
+### Kapan Menggunakan Framer Motion?
+Framer Motion cocok digunakan jika kamu membutuhkan animasi yang kompleks dan interaktif di aplikasi React, seperti:
+-  Transisi Halaman : Membuat animasi perpindahan halaman lebih mulus dan menarik.
+-  Hover dan Tap Animations : Menambahkan interaksi halus saat pengguna berinteraksi dengan elemen UI.
+-  Drag Animations : Untuk antarmuka drag-and-drop atau elemen yang bisa di-drag, seperti slider atau carousel.
+  
+Framer Motion sangat serbaguna, sehingga dapat diintegrasikan ke dalam aplikasi untuk animasi tingkat lanjut tanpa mempengaruhi performa UI secara signifikan.
