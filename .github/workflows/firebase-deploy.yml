@@ -1,0 +1,34 @@
+name: Firebase Deploy
+
+on:
+  push:
+    branches:
+      - main  # Gantilah dengan nama branch yang sesuai jika perlu
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Mengambil kode dari repositori
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # Mengatur Node.js untuk proyek Firebase
+        with:
+          node-version: '18'  # Gantilah dengan versi Node.js yang sesuai jika perlu
+
+      - name: Install dependencies
+        run: |
+          yarn install  # Menggunakan Yarn untuk menginstal dependensi
+
+      - name: Install Firebase CLI
+        run: yarn global add firebase-tools  # Menginstal Firebase CLI secara global menggunakan Yarn
+
+      - name: Authenticate with Firebase
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}" | base64 --decode > "$HOME/.firebase/credentials.json"  # Menyimpan Firebase service account key sebagai file JSON
+        env:
+          FIREBASE_SERVICE_ACCOUNT_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting  # Hanya melakukan deploy Firebase Hosting
